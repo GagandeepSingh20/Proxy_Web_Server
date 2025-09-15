@@ -41,6 +41,68 @@ int cache_size;
 
 
 void *thread_fn(void* arg){
+    sem_wait(&semaphore);
+    int client_socketId=*((int*)arg);
+    pthread_detach(pthread_self());
+    char buffer[4096];
+    bzero(buffer,4096);
+    int n=recv(client_socketId,buffer,4096,0);
+    if(n<0){
+        perror("RECEIVING FAILED\n");
+        exit(1);
+    }
+    printf("REQUEST RECEIVED FROM CLIENT IS :\n %s\n",buffer);
+    char method[10],url[500],protocol[10];
+    sscanf(buffer,"%s %s %s",method,url,protocol);
+    printf("METHOD: %s URL: %s PROTOCOL: %s\n",method,url,protocol);
+
+    if(strcmp(method,"GET")!=0){
+        char* error_message="HTTP/1.0 501 Not Implemented\r\n\r\n";
+        send(client_socketId,error_message,strlen(error_message),0);
+        close(client_socketId);
+        printf("501 NOT IMPLEMENTED\n");
+        sem_post(&semaphore);
+        return NULL;
+    }
+
+    cache_element *cache_ptr=find(url);
+    if(cache_ptr!=NULL){
+        printf("Cache Hit\n");
+        send(client_socketId,cache_ptr->data,cache_ptr->len,0);
+        close(client_socketId);
+        sem_post(&semaphore);
+        return NULL;
+    }
+    printf("Cache Miss\n");
+
+    char host[100],path[500];
+    int port;
+    parse_url(url,host,path,&port);
+
+    struct sockaddr_in server_addr;
+    struct hostent *server;
+
+    server= gethostbyname(host);
+    if(server==NULL){
+        char* error_message="HTTP/1.0 404 Not Found\r\n\r\n";
+        send(client_socketId,error_message,strlen(error_message),0);
+        close(client_socketId);
+        printf("404 NOT FOUND\n");
+        sem_post(&semaphore);
+        return NULL;
+    }
+
+    int server_socketId=socket(AF_INET,SOCK_STREAM,0);
+    if(server_socketId<0){
+        perror("Socket Creation Failed\n");
+        exit(1);
+    }
+
+    bzero((char*)&server_addr,sizeof(server_addr));
+    server_addr.sin_family=AF_INET;
+    bcopy((char*)server->h_addr,(char*)&server_addr.sin_addr.s_addr,server->h_length);
+    server_addr.sin_port=htons(port);
+
 
 }
 
