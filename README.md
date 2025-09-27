@@ -31,16 +31,7 @@ By integrating a **multi-threaded architecture** and an **LRU caching system**, 
 
 ---
 
-## 📁 Project Structure
 
-
-
-.
-├── proxy\_server\_with\_cache.c    # Main proxy server implementation (multi-threaded + caching)
-├── proxy\_parse.c                # HTTP request parsing logic
-├── proxy\_parse.h                # Header file for parsing functions
-├── Makefile                     # Automates compilation
-└── README.md                    # Project documentation
 
 
 
