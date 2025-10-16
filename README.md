@@ -31,41 +31,6 @@ By integrating a **multi-threaded architecture** and an **LRU caching system**, 
 
 ---
 
-
-
-
-
-## ⚙️ Installation & Setup
-
-### 1. Clone the Repository
-git clone https://github.com/GagandeepSingh20/Proxy_Web_Server.git
-cd Proxy_Web_Server
-
-
-### 2. Build the Project
-
-Compile using the provided Makefile:
-make
-
-This will generate an executable named `proxy_server`.
-
----
-
-## ▶️ Usage
-
-Run the proxy server by specifying a port number:
-
-
-./proxy_server <port_number>
-
-
-Now configure your browser or HTTP client (like `curl`) to use `localhost:8080` as the proxy.
-
-
-If the requested page is already in the cache, the proxy will serve it directly from memory without fetching it from the remote server again.
-
----
-
 ## 🔧 How It Works
 
 1. **Client Connection:** The server listens on the specified port and accepts multiple client connections concurrently using threads.
