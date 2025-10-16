@@ -51,31 +51,6 @@ By integrating a **multi-threaded architecture** and an **LRU caching system**, 
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome!
-Follow these steps to contribute:
-
-1. Fork the repository
-2. Create a feature branch
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. Commit your changes
-
-   ```bash
-   git commit -m "Add your feature"
-   ```
-4. Push to the branch
-
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-5. Open a Pull Request describing your changes.
-
----
-
 ## 📝 License
 
 This project is licensed under the **MIT License** – you are free to use, modify, and distribute it.
