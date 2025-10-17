@@ -105,26 +105,10 @@ int ParsedHeader_remove(struct ParsedRequest *pr, const char *key)
 
 /* modify the header with given key, giving it a new value
  * return 1 on success and 0 if no such header found
- * 
-int ParsedHeader_modify(struct ParsedRequest *pr, const char * key, 
-			const char *newValue)
-{
-     struct ParsedHeader *tmp;
-     tmp = ParsedHeader_get(pr, key);
-     if(tmp != NULL)
-     {
-	  if(tmp->valuelen < strlen(newValue)+1)
-	  {
-	       tmp->valuelen = strlen(newValue)+1;
-	       tmp->value = (char *) realloc(tmp->value, 
-					     tmp->valuelen * sizeof(char));
-	  } 
-	  strcpy(tmp->value, newValue);
-	  return 1;
-     }
-     return 0;
-}
+
+ 
 */
+
 
 /*
   ParsedHeader Private Methods
@@ -601,3 +585,4 @@ int ParsedRequest_printRequestLine(struct ParsedRequest *pr,
      *tmp = current-buf;
      return 0;
 }
+
