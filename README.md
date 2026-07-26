@@ -1,8 +1,7 @@
 
 # 🧰 Proxy Web Server
 
-A **Multi-Threaded HTTP Proxy Server** written in **C**, designed to efficiently handle multiple simultaneous client requests while improving performance through an integrated **LRU (Least Recently Used) caching system**. This project demonstrates key concepts in networking, concurrency, and caching, making it an excellent learning resource for systems programming.
-
+A **Multi-Threaded HTTP Proxy Server** written in **C**, designed to efficiently handle multiple simultaneous client requests while improving performance through an integrated **LRU (Least Recently Used) caching system**.
 ---
 
 ## 🧠 Overview
