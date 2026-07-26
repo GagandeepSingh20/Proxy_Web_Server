@@ -1,13 +1,8 @@
 
-# 🧰 Proxy Web Server
+#  Proxy Web Server
 
-A **Multi-Threaded HTTP Proxy Server** written in **C**, designed to efficiently handle multiple simultaneous client requests while improving performance through an integrated **LRU (Least Recently Used) caching system**.
----
+A **Multi-Threaded** HTTP Proxy Server written in **C**, designed to efficiently handle multiple simultaneous client requests while improving performance through an integrated **LRU** (Least Recently Used) caching system.
 
-## 🧠 Overview
-
-The **Proxy Web Server** acts as an intermediary between clients and target web servers. It listens for HTTP requests, forwards them to the appropriate destination, and relays responses back to the clients.  
-By integrating a **multi-threaded architecture** and an **LRU caching system**, the server achieves high concurrency and improved response times, significantly reducing repetitive network requests.
 
 ---
 
@@ -30,29 +25,15 @@ By integrating a **multi-threaded architecture** and an **LRU caching system**, 
 
 ---
 
-## 🔧 How It Works
+## How It Works
 
-1. **Client Connection:** The server listens on the specified port and accepts multiple client connections concurrently using threads.
-2. **Request Parsing:** Incoming HTTP requests are parsed to extract the target server and resource.
-3. **Forwarding & Response:** The proxy forwards the request to the destination server and relays the response back to the client.
-4. **LRU Caching:** Frequently accessed responses are stored in memory using an LRU caching mechanism. Cached responses are served instantly if available.
-5. **Thread Synchronization:** Semaphores manage concurrent access to shared data structures, ensuring thread safety and preventing race conditions.
+1. Client sends an HTTP GET request to the proxy server.
+2. Proxy checks the cache:
+   - If present: sends cached response.
+   - If not: forwards the request to the original server, caches the response, and returns it to the client.
+3. Handles multiple clients simultaneously using multi-threading.
+4. Uses semaphores to ensure mutual exclusion when accessing or modifying shared resources like the cache.
 
----
-
-## 🚀 Future Enhancements
-
-* 🔐 Add support for **HTTPS** using the CONNECT method.
-* 📁 Implement **persistent disk-based caching** for long-term storage.
-* 📊 Add detailed **logging and monitoring** features.
-* 🧪 Include **automated unit testing** and performance benchmarking.
-* ⚙️ Add configuration options (e.g., cache size, logging level) via command-line or config files.
-
----
-
-## 📝 License
-
-This project is licensed under the **MIT License** – you are free to use, modify, and distribute it.
 
 ---
 
