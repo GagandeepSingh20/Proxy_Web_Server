@@ -4,9 +4,8 @@
 A **Multi-Threaded** HTTP Proxy Server written in **C**, designed to efficiently handle multiple simultaneous client requests while improving performance through an integrated **LRU** (Least Recently Used) caching system.
 
 
----
 
-## ✨ Features
+## Features
 
 - 🌐 **HTTP Proxy Server:** Forwards client HTTP requests to target web servers and returns responses.  
 - ⚙️ **Multi-threaded Architecture:** Handles multiple client connections simultaneously.  
@@ -14,16 +13,16 @@ A **Multi-Threaded** HTTP Proxy Server written in **C**, designed to efficiently
 - 🔒 **Thread Synchronization:** Uses semaphores to ensure safe access to shared resources and prevent race conditions.  
 - 📜 **Makefile Support:** Simplifies compilation and project management.
 
----
 
-## 🛠️ Technologies Used
+
+## Technologies Used
 
 - **Programming Language:** C  
 - **Core Concepts:** Socket Programming, Multi-threading, Synchronization with Semaphores  
 - **Data Structures:** LRU Cache  
 - **Build Tool:** Makefile  
 
----
+
 
 ## How It Works
 
@@ -35,9 +34,8 @@ A **Multi-Threaded** HTTP Proxy Server written in **C**, designed to efficiently
 4. Uses semaphores to ensure mutual exclusion when accessing or modifying shared resources like the cache.
 
 
----
 
-## 👨‍💻 Author
+## Author
 
 [**Gagandeep Singh Choudhary**](https://github.com/GagandeepSingh20)
 
